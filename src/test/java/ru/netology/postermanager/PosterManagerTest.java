@@ -20,6 +20,22 @@ public class PosterManagerTest {
     }
 
     @Test
+    public void AddMoviesNotSet() {
+        PosterManager manager = new PosterManager();
+        manager.add("movie1");
+        manager.add("movie2");
+        manager.add("movie3");
+
+
+        String[] expected = {"movie1", "movie2", "movie3"};
+        String[] actual = manager.findAll();
+
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
+    @Test
     public void AddMoviesEqualLimit() {
         PosterManager manager = new PosterManager(10);
 
