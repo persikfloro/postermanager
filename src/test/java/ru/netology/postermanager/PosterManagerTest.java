@@ -93,6 +93,80 @@ public class PosterManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void FindRecentWhenUnderLimit() {
+        PosterManager manager = new PosterManager(15);
+        manager.add("movie1");
+        manager.add("movie2");
+        manager.add("movie3");
+        manager.add("movie4");
+        manager.add("movie5");
+        manager.add("movie6");
+        manager.add("movie7");
+        manager.add("movie8");
+        manager.add("movie9");
+        manager.add("movie10");
+        manager.add("movie11");
+        manager.add("movie12");
+
+        String[] actual = manager.findLast();
+        String[] expected = {"movie12", "movie11", "movie10", "movie9", "movie8", "movie7", "movie6", "movie5", "movie4", "movie3", "movie2", "movie1"};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void FindRecentWhenOverLimit() {
+        PosterManager manager = new PosterManager(15);
+        manager.add("movie1");
+        manager.add("movie2");
+        manager.add("movie3");
+        manager.add("movie4");
+        manager.add("movie5");
+        manager.add("movie6");
+        manager.add("movie7");
+        manager.add("movie8");
+        manager.add("movie9");
+        manager.add("movie10");
+        manager.add("movie11");
+        manager.add("movie12");
+        manager.add("movie13");
+        manager.add("movie14");
+        manager.add("movie15");
+        manager.add("movie16");
+        manager.add("movie17");
+        manager.add("movie18");
+
+        String[] actual = manager.findLast();
+        String[] expected = {"movie18","movie17", "movie16", "movie15","movie14","movie13", "movie12", "movie11", "movie10", "movie9", "movie8", "movie7", "movie6", "movie5", "movie4"};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void FindRecentWhenEqualLimit() {
+        PosterManager manager = new PosterManager(15);
+        manager.add("movie1");
+        manager.add("movie2");
+        manager.add("movie3");
+        manager.add("movie4");
+        manager.add("movie5");
+        manager.add("movie6");
+        manager.add("movie7");
+        manager.add("movie8");
+        manager.add("movie9");
+        manager.add("movie10");
+        manager.add("movie11");
+        manager.add("movie12");
+        manager.add("movie13");
+        manager.add("movie14");
+        manager.add("movie15");
+
+        String[] actual = manager.findLast();
+        String[] expected = {"movie15","movie14","movie13", "movie12", "movie11", "movie10", "movie9", "movie8", "movie7", "movie6", "movie5", "movie4", "movie3", "movie2", "movie1"};
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 
 
 }
